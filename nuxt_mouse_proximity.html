@@ -45,6 +45,14 @@
             margin-top: 1rem;
         }
 
+        p {
+            padding-left: 1rem;
+        }
+
+        h3 {
+            padding-left: 1rem;
+        }
+
         .p-4 {
             padding: 1rem;
         }
@@ -131,8 +139,11 @@
 
 <body>
     <div class="bg-slate-900 relative p-4 text-white">
+        <div style="height: 10rem;"></div>
+    </div>
+    <div class="bg-slate-900 relative p-4 text-white">
         <main class="container mx-auto h-full">
-            <h3 class="text-center font-bold text-4xl">How to reproduce the cool Nuxt Card Hover</h3>
+            <h3 class="text-center font-bold text-4xl">How to Reproduce the Cool Nuxt Card Hover Effect</h3>
             <section class="grid grid-cols-3 gap-8 mt-4">
                 <div class="wrapper" style="--x: -350px; --y: -350px">
                     <div class="inner-wrapper">
@@ -213,15 +224,17 @@
         <div style="height: 30rem;"></div>
     </div>
     <script>
-       document.addEventListener("DOMContentLoaded", () => {
+        document.addEventListener("DOMContentLoaded", () => {
             const innerElements = document.querySelectorAll(".inner");
             const wrappers = document.querySelectorAll(".wrapper");
 
             function mouseMoveGradient(e) {
                 wrappers.forEach(wrapper => {
                     const rect = wrapper.getBoundingClientRect();
-                    const x = e.pageX - rect.left;
-                    const y = e.pageY - rect.top;
+                    const centerX = rect.left + rect.width / 2; // Center X coordinate of wrapper
+                    const centerY = rect.top + rect.height / 2; // Center Y coordinate of wrapper
+                    const x = (e.clientX - centerX) / .9; // Adjust the divisor to control distance
+                    const y = (e.clientY - centerY) / .9; // Adjust the divisor to control distance
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
                 });
@@ -238,8 +251,10 @@
             }
 
             function resetGradient() {
-                this.querySelector(".inner").style.removeProperty("--x");
-                this.querySelector(".inner").style.removeProperty("--y");
+                wrappers.forEach(wrapper => {
+                    wrapper.querySelector(".inner").style.setProperty("--x", `-500px`);;
+                    wrapper.querySelector(".inner").style.setProperty("--y", `-1500px`);
+                });
             }
 
             innerElements.forEach(inner => {
