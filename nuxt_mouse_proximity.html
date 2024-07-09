@@ -12,7 +12,7 @@
         }
 
         .bg-slate-900 {
-            background-color: #1e293b;
+            background-color: #060606;
         }
 
         .text-white {
@@ -66,20 +66,34 @@
             z-index: 10;
             border-radius: 0.75rem;
             overflow: hidden;
-            padding: 2px;
+            padding: 0px;
             transition: background-color 0.3s;
             width: 100%;
             height: 9.6rem;
         }
 
         .wrapper:hover {
-            background-color: #3ff0f7;
+            background-color: #c99ffd;
+        }
+
+        .inner-wrapper {
+            position: relative;
+            z-index: 11;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            padding: 2px;
+            transition: background-color 0.3s;
+            width: 100%;
+            height: 9.6rem;
+            background-color: rgb(62, 62, 63);
         }
 
         .inner {
-            background-color: #334155;
+            background-color: #282b2e;
             border-radius: 0.75rem;
-            padding: 0.75rem;
+            padding: 2px;
+            height: 9.1rem;
+            width: 97.5%;
         }
 
         .text-3xl {
@@ -87,7 +101,20 @@
         }
 
         .wrapper:before {
-            background: radial-gradient(400px circle at var(--x) var(--y), #3ff0f7 0, transparent 80%);
+            background: radial-gradient(400px circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
+            will-change: background;
+            content: "";
+            display: block;
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            width: calc(100% + 4px) !important;
+            height: calc(100% + 4px) !important;
+            z-index: -1;
+        }
+
+        .inner-wrapper:before {
+            background: radial-gradient(400px circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
             will-change: background;
             content: "";
             display: block;
@@ -107,57 +134,75 @@
             <h3 class="text-center font-bold text-4xl">How to reproduce the cool Nuxt Card Hover</h3>
             <section class="grid grid-cols-3 gap-8 mt-4">
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
                 <div class="wrapper" style="--x: -350px; --y: -350px">
-                    <div class="inner">
-                        <h3 class="text-3xl font-bold">Card Title</h3>
-                        <p>Content inside</p>
+                    <div class="inner-wrapper">
+                        <div class="inner">
+                            <h3 class="text-3xl font-bold">Card Title</h3>
+                            <p>Content inside</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -169,6 +214,7 @@
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const wrappers = document.querySelectorAll(".wrapper");
+            const inwrappers = document.querySelectorAll(".inner-wrapper");
 
             function mouseMoveGradient(e) {
                 wrappers.forEach(wrapper => {
@@ -177,6 +223,13 @@
                     const y = e.pageY - rect.top;
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
+                });
+                inwrappers.forEach(inwrapper => {
+                    const rect = wrapper.getBoundingClientRect();
+                    const x = e.pageX - rect.left;
+                    const y = e.pageY - rect.top;
+                    inwrapper.style.setProperty("--x", `${x}px`);
+                    inwrapper.style.setProperty("--y", `${y}px`);
                 });
             }
 
