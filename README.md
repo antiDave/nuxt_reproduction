@@ -1,6 +1,6 @@
 # nuxt_reproduction
 Nuxt Card Cool Hover Effect
-This project demonstrates a hover effect for cards using pure HTML, CSS, and JavaScript. The effect includes a radial gradient background that follows the mouse movement when it gets close to or enters a card.
+This project advances teh work done by dimar-hanung and demonstrates a hover effect for cards using pure HTML, CSS, and JavaScript. The effect includes a radial gradient background that follows the mouse movement when it gets close to or enters a card. From the previous work we have fixed the bottom and made it work with standard html, css, and js.
 
 Features
 Responsive 3-column grid layout
