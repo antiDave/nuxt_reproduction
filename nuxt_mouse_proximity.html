@@ -93,15 +93,17 @@
             border-radius: 0.75rem;
             padding: 2px;
             height: 9.1rem;
-            width: 97.5%;
+            width: 97.6%;
+            position: relative;
+            z-index: 12;
         }
 
         .text-3xl {
             font-size: 1.875rem;
         }
 
-        .wrapper:before {
-            background: radial-gradient(400px circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
+        .inner-wrapper:before {
+            background: radial-gradient(400px circle at var(--x) var(--y), #5bdeff 0, transparent 80%);
             will-change: background;
             content: "";
             display: block;
@@ -113,16 +115,15 @@
             z-index: -1;
         }
 
-        .inner-wrapper:before {
-            background: radial-gradient(400px circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
-            will-change: background;
+        .inner::after {
             content: "";
-            display: block;
             position: absolute;
-            left: -2px;
-            top: -2px;
-            width: calc(100% + 4px) !important;
-            height: calc(100% + 4px) !important;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(150px circle at var(--x) var(--y), rgba(72, 72, 72, 0.4) 0, transparent 60%);
+            pointer-events: none;
             z-index: -1;
         }
     </style>
@@ -212,9 +213,9 @@
         <div style="height: 30rem;"></div>
     </div>
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+       document.addEventListener("DOMContentLoaded", () => {
+            const innerElements = document.querySelectorAll(".inner");
             const wrappers = document.querySelectorAll(".wrapper");
-            const inwrappers = document.querySelectorAll(".inner-wrapper");
 
             function mouseMoveGradient(e) {
                 wrappers.forEach(wrapper => {
@@ -224,19 +225,31 @@
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
                 });
-                inwrappers.forEach(inwrapper => {
-                    const rect = wrapper.getBoundingClientRect();
-                    const x = e.pageX - rect.left;
-                    const y = e.pageY - rect.top;
-                    inwrapper.style.setProperty("--x", `${x}px`);
-                    inwrapper.style.setProperty("--y", `${y}px`);
+            }
+
+            function mouseMoveGradientInner(e) {
+                innerElements.forEach(inner => {
+                    const rect = inner.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    inner.style.setProperty("--x", `${x}px`);
+                    inner.style.setProperty("--y", `${y}px`);
                 });
             }
+
+            function resetGradient() {
+                this.querySelector(".inner").style.removeProperty("--x");
+                this.querySelector(".inner").style.removeProperty("--y");
+            }
+
+            innerElements.forEach(inner => {
+                inner.addEventListener("mousemove", mouseMoveGradientInner);
+                inner.parentElement.addEventListener("mouseleave", resetGradient); // Change the event listener to parentElement
+            });
 
             document.addEventListener("mousemove", mouseMoveGradient);
         });
     </script>
-
 </body>
 
 </html>
