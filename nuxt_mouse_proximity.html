@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nuxt Card Cool Hover</title>
     <style>
+        html {
+            font-size: 16px;
+            ;
+        }
+
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -20,7 +25,7 @@
         }
 
         .container {
-            width: 80%;
+            width: 80vw;
             max-width: 1200px;
             margin: 0 auto;
         }
@@ -89,9 +94,8 @@
             z-index: 11;
             border-radius: 0.75rem;
             overflow: hidden;
-            padding: 2px;
+            padding: 0.125rem;
             transition: background-color 0.3s;
-            width: 100%;
             height: 9.6rem;
             background-color: rgb(39, 39, 39);
         }
@@ -99,9 +103,10 @@
         .inner {
             background-color: #141414;
             border-radius: 0.75rem;
-            padding: 2px;
+            padding: 0.125rem;
             height: 9.1rem;
-            width: 97.6%;
+            width: calc(100% - 4px);
+            /* changing percentage to vw */
             position: relative;
             z-index: 12;
         }
@@ -134,28 +139,18 @@
             pointer-events: none;
             z-index: -1;
         }
-        .wrapper:before {
-            background: radial-gradient(20em circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
-            will-change: background;
-            content: "";
-            display: block;
-            position: absolute;
-            left: -2px;
-            top: -2px;
-            width: calc(100% + 4px) !important;
-            height: calc(100% + 4px) !important;
-            z-index: -1;
-        }
     </style>
 </head>
 
 <body>
     <div class="bg-slate-900 relative p-4 text-white">
-        <div style="height: 10rem;"></div>
+        <div style="height: 10rem;">
+            <h3 class="text-center font-bold text-4xl">How to Reproduce the Cool Nuxt Card Hover Effect</h3>
+        </div>
     </div>
     <div class="bg-slate-900 relative p-4 text-white">
         <main class="container mx-auto h-full">
-            <h3 class="text-center font-bold text-4xl">How to Reproduce the Cool Nuxt Card Hover Effect</h3>
+
             <section class="grid grid-cols-3 gap-8 mt-4">
                 <div class="wrapper" style="--x: -350px; --y: -350px">
                     <div class="inner-wrapper">
@@ -245,7 +240,7 @@
                 wrappers.forEach(wrapper => {
                     const rect = wrapper.getBoundingClientRect();
                     const x = e.clientX - rect.left;
-                    const y = e.clientY - rect.top;
+                    const y = e.clientY - (rect.top - 25);
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
                 });
@@ -265,10 +260,6 @@
                 wrappers.forEach(wrapper => {
                     wrapper.querySelector(".inner").style.setProperty("--x", `-500px`);;
                     wrapper.querySelector(".inner").style.setProperty("--y", `-1500px`);
-                });
-                innerElements.forEach(inner => {
-                    inner.querySelector(".inner").style.setProperty("--x", `-500px`);;
-                    inner.querySelector(".inner").style.setProperty("--y", `-1500px`);
                 });
             }
 
