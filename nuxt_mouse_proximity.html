@@ -111,7 +111,7 @@
         }
 
         .inner-wrapper:before {
-            background: radial-gradient(400px circle at var(--x) var(--y), #5bdeff 0, transparent 80%);
+            background: radial-gradient(20em circle at var(--x) var(--y), #5bdeff 0, transparent 80%);
             will-change: background;
             content: "";
             display: block;
@@ -130,8 +130,20 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(150px circle at var(--x) var(--y), rgba(72, 72, 72, 0.4) 0, transparent 60%);
+            background: radial-gradient(10em circle at var(--x) var(--y), rgba(72, 72, 72, 0.4) 0, transparent 60%);
             pointer-events: none;
+            z-index: -1;
+        }
+        .wrapper:before {
+            background: radial-gradient(20em circle at var(--x) var(--y), #c99ffd 0, transparent 80%);
+            will-change: background;
+            content: "";
+            display: block;
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            width: calc(100% + 4px) !important;
+            height: calc(100% + 4px) !important;
             z-index: -1;
         }
     </style>
@@ -232,8 +244,8 @@
             function mouseMoveGradient(e) {
                 wrappers.forEach(wrapper => {
                     const rect = wrapper.getBoundingClientRect();
-                    const x = e.pageX - rect.left;
-                    const y = e.pageY - rect.top;
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
                 });
@@ -266,6 +278,7 @@
             });
 
             document.addEventListener("mousemove", mouseMoveGradient);
+            resetGradient();
         });
     </script>
 </body>
