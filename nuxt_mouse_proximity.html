@@ -228,13 +228,12 @@
             const innerElements = document.querySelectorAll(".inner");
             const wrappers = document.querySelectorAll(".wrapper");
 
+
             function mouseMoveGradient(e) {
                 wrappers.forEach(wrapper => {
                     const rect = wrapper.getBoundingClientRect();
-                    const centerX = rect.left + rect.width / 2; // Center X coordinate of wrapper
-                    const centerY = rect.top + rect.height / 2; // Center Y coordinate of wrapper
-                    const x = (e.clientX - centerX) / .9; // Adjust the divisor to control distance
-                    const y = (e.clientY - centerY) / .9; // Adjust the divisor to control distance
+                    const x = e.pageX - rect.left;
+                    const y = e.pageY - rect.top;
                     wrapper.style.setProperty("--x", `${x}px`);
                     wrapper.style.setProperty("--y", `${y}px`);
                 });
@@ -254,6 +253,10 @@
                 wrappers.forEach(wrapper => {
                     wrapper.querySelector(".inner").style.setProperty("--x", `-500px`);;
                     wrapper.querySelector(".inner").style.setProperty("--y", `-1500px`);
+                });
+                innerElements.forEach(inner => {
+                    inner.querySelector(".inner").style.setProperty("--x", `-500px`);;
+                    inner.querySelector(".inner").style.setProperty("--y", `-1500px`);
                 });
             }
 
